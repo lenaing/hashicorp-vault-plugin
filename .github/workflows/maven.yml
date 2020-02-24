@@ -37,7 +37,8 @@ jobs:
         run: |
           mvn clean package -B -V --no-transfer-progress ${{ matrix.flags }}
 
-      - name: Upload plugin artifact
+      - uses: actions/upload-artifact@v1
+        name: Upload plugin artifact
         if: matrix.os == 'ubuntu-latest' && matrix.java == 8 && matrix.jenkinsVersion == '2.138.4'
         with:
           name: hashicorp-vault-plugin.hpi
